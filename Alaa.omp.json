@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "name": "AlaaFlatRemixPro",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "background": "#1a1b26",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0b6",
+          "template": " \ud83d\udda5\ufe0f  {{ .Icon }} ",
+          "properties": {
+            "ubuntu": "\uf31b"
+          }
+        },
+        {
+          "type": "session",
+          "style": "powerline",
+          "background": "#2ac3de",
+          "foreground": "#1a1b26",
+          "powerline_symbol": "\ue0b0",
+          "template": " \ud83d\udc64 {{ .UserName }}@{{ .HostName }} "
+        },
+        {
+          "type": "time",
+          "style": "powerline",
+          "background": "#7aa2f7",
+          "foreground": "#1a1b26",
+          "powerline_symbol": "\ue0b0",
+          "template": " \ud83d\udd52 {{ .CurrentDate | date \"15:04\" }} "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "background": "#c0caf5",
+          "foreground": "#1a1b26",
+          "powerline_symbol": "\ue0b0",
+          "template": " \ud83d\udcc1 {{ .Path }} ",
+          "properties": {
+            "max_depth": 3,
+            "style": "full",
+            "folder_icon": "\uf115",
+            "home_icon": "\ueb06 ~"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "background": "#f7768e",
+          "foreground": "#1a1b26",
+          "powerline_symbol": "\ue0b0",
+          "template": " \uf418 {{ .HEAD }}{{ if .Working.Changed }} \u270f\ufe0f {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \u2705 {{ .Staging.String }}{{ end }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "background": "#1a1b26",
+          "foreground": "#e0af68",
+          "powerline_symbol": "\ue0b0",
+          "template": " \u23f1 {{ .FormattedMs }} ",
+          "properties": {
+            "always_enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "segments": [
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "#9ece6a",
+          "template": " {{ if gt .Code 0 }}\u2717{{ else }}\u2714{{ end }} ",
+          "properties": {
+            "always_enabled": true
+          }
+        }
+      ]
+    }
+  ]
+}
