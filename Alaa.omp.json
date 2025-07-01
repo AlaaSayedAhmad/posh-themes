@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "name": "AlaaFlatRemixPro-v2",
+  "name": "AlaaFlatRemixPro-v3",
   "blocks": [
     {
       "type": "prompt",
@@ -8,11 +8,19 @@
       "newline": true,
       "segments": [
         {
-          "type": "os",
+          "type": "command",
           "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "background": "#44475a",
+          "foreground": "#f8f8f2",
+          "template": " #{{ .CmdCount }} "
+        },
+        {
+          "type": "os",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
           "background": "#1a1b26",
           "foreground": "#ffffff",
-          "leading_diamond": "\ue0b6",
           "template": " \ud83d\udda5\ufe0f  {{ .Icon }} ",
           "properties": {
             "ubuntu": "\uf31b"
@@ -51,7 +59,7 @@
           "background": "#f7768e",
           "foreground": "#1a1b26",
           "powerline_symbol": "\ue0b0",
-          "template": " \uf418 {{ .HEAD }}{{ if .Working.Changed }} \u270f\ufe0f {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \u2705 {{ .Staging.String }}{{ end }} "
+          "template": " \uf418 {{ .HEAD }}{{ if .Staging.Changed }} \u2705 {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \u270f\ufe0f {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
         },
         {
           "type": "docker",
@@ -81,17 +89,6 @@
             "charging_icon": "🔌",
             "discharging_icon": "🔋"
           }
-        },
-        {
-          "type": "executiontime",
-          "style": "powerline",
-          "background": "#1a1b26",
-          "foreground": "#e0af68",
-          "powerline_symbol": "\ue0b0",
-          "template": " \u23f1 {{ .FormattedMs }} ",
-          "properties": {
-            "threshold": 500
-          }
         }
       ]
     },
@@ -99,10 +96,16 @@
       "type": "rprompt",
       "segments": [
         {
+          "type": "network",
+          "style": "plain",
+          "foreground": "#82aaff",
+          "template": "󰓅 {{ .Down.String }} | 󰓃 {{ .Up.String }} "
+        },
+        {
           "type": "status",
           "style": "plain",
           "foreground": "{{ if gt .Code 0 }}#ff5252{{ else }}#9ece6a{{ end }}",
-          "template": "{{ if gt .Code 0 }}\u2717 {{ .Code }}{{ else }}\u2714{{ end }} ",
+          "template": " {{ if gt .Code 0 }}\u2717 {{ .Code }}{{ else }}\u2714{{ end }} ",
           "properties": {
             "always_enabled": true
           }
