@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "name": "AlaaFlatRemixPro",
+  "name": "AlaaFlatRemixPro-v2",
   "blocks": [
     {
       "type": "prompt",
@@ -54,12 +54,33 @@
           "template": " \uf418 {{ .HEAD }}{{ if .Working.Changed }} \u270f\ufe0f {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \u2705 {{ .Staging.String }}{{ end }} "
         },
         {
+          "type": "docker",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#0db7ed",
+          "template": " \uf308 {{ .Context }} "
+        },
+        {
           "type": "python",
           "style": "powerline",
           "powerline_symbol": "\ue0b0",
           "background": "#41a6b5",
           "foreground": "#ffffff",
           "template": " \ue235 {{ .Venv }} "
+        },
+        {
+          "type": "battery",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#1a1b26",
+          "background": "#e0af68",
+          "template": " {{ if .Charging }}⚡{{ end }}{{ .Icon }}{{ .Percentage }}% ",
+          "properties": {
+            "charged_icon": "🔋",
+            "charging_icon": "🔌",
+            "discharging_icon": "🔋"
+          }
         },
         {
           "type": "executiontime",
@@ -81,7 +102,7 @@
           "type": "status",
           "style": "plain",
           "foreground": "{{ if gt .Code 0 }}#ff5252{{ else }}#9ece6a{{ end }}",
-          "template": "{{ if gt .Code 0 }}\u2717{{ else }}\u2714{{ end }} ",
+          "template": "{{ if gt .Code 0 }}\u2717 {{ .Code }}{{ else }}\u2714{{ end }} ",
           "properties": {
             "always_enabled": true
           }
