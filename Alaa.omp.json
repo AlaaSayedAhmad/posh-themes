@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "name": "AlaaFlatRemixPro-v3",
+  "name": "AlaaFlatRemixPro-v4",
   "blocks": [
     {
       "type": "prompt",
@@ -48,9 +48,19 @@
           "background": "#c0caf5",
           "foreground": "#1a1b26",
           "powerline_symbol": "\ue0b0",
-          "template": " \uf07c {{ .Path }} ",
+          "template": " {{ .Path }} ",
           "properties": {
-            "style": "agnoster_full"
+            "style": "agnoster_short",
+            "folder_separator_icon": " \ue0b1 ",
+            "home_icon": "~",
+            "aliases": {
+              "~/Documents": "\uf07b",
+              "~/Downloads": "\uf019",
+              "~/Music": "\uf001",
+              "~/Pictures": "\uf03e",
+              "~/Desktop": "\uf108",
+              "~/Videos": "\uf03d"
+            }
           }
         },
         {
@@ -59,7 +69,7 @@
           "background": "#f7768e",
           "foreground": "#1a1b26",
           "powerline_symbol": "\ue0b0",
-          "template": " \uf418 {{ .HEAD }}{{ if .Staging.Changed }} \u2705 {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \u270f\ufe0f {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
+          "template": " \uf418 {{ .HEAD }}{{ if .UpstreamURL }} {{ .UpstreamIcon }}{{ .Ahead }} ⇣{{ .Behind }}{{ end }}{{ if .Staging.Changed }} \u2705 {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \u270f\ufe0f {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
         },
         {
           "type": "docker",
@@ -95,6 +105,15 @@
     {
       "type": "rprompt",
       "segments": [
+        {
+          "type": "sysinfo",
+          "style": "plain",
+          "foreground": "#c0caf5",
+          "template": "\uf2db {{ .CPU.Percentage }}% | \uf85a {{ .RAM.PercentageUsed }}% ",
+          "properties": {
+            "precision": 0
+          }
+        },
         {
           "type": "network",
           "style": "plain",
