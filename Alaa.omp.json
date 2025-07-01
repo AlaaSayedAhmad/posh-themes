@@ -24,15 +24,7 @@
           "background": "#2ac3de",
           "foreground": "#1a1b26",
           "powerline_symbol": "\ue0b0",
-          "template": " \ud83d\udc64 {{ .UserName }}@{{ .HostName }} "
-        },
-        {
-          "type": "time",
-          "style": "powerline",
-          "background": "#7aa2f7",
-          "foreground": "#1a1b26",
-          "powerline_symbol": "\ue0b0",
-          "template": " \ud83d\udd52 {{ .CurrentDate | date \"15:04\" }} "
+          "template": " \ud83d\udc64 {{ .UserName }} "
         },
         {
           "type": "path",
@@ -40,12 +32,9 @@
           "background": "#c0caf5",
           "foreground": "#1a1b26",
           "powerline_symbol": "\ue0b0",
-          "template": " \ud83d\udcc1 {{ .Path }} ",
+          "template": " \uf07c {{ .Path }} ",
           "properties": {
-            "max_depth": 3,
-            "style": "full",
-            "folder_icon": "\uf115",
-            "home_icon": "\ueb06 ~"
+            "style": "agnoster_full"
           }
         },
         {
@@ -57,26 +46,43 @@
           "template": " \uf418 {{ .HEAD }}{{ if .Working.Changed }} \u270f\ufe0f {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \u2705 {{ .Staging.String }}{{ end }} "
         },
         {
-          "type": "executiontime",
+          "type": "python",
           "style": "powerline",
-          "background": "#1a1b26",
-          "foreground": "#e0af68",
           "powerline_symbol": "\ue0b0",
-          "template": " \u23f1 {{ .FormattedMs }} ",
-          "properties": {
-            "always_enabled": true
-          }
+          "background": "#41a6b5",
+          "foreground": "#ffffff",
+          "template": " \ue235 {{ .Venv }} "
+        },
+        {
+            "type": "root",
+            "style": "powerline",
+            "powerline_symbol": "\ue0b0",
+            "background": "#ff5252",
+            "foreground": "#ffffff",
+            "template": " \u26a0\ufe0f ROOT "
         }
       ]
     },
     {
-      "type": "rprompt",
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
       "segments": [
         {
+          "type": "executiontime",
+          "style": "diamond",
+          "background": "#1a1b26",
+          "foreground": "#e0af68",
+          "leading_diamond": "\ue0b6",
+          "template": " \u23f1 {{ .FormattedMs }} "
+        },
+        {
           "type": "status",
-          "style": "plain",
-          "foreground": "#9ece6a",
-          "template": " {{ if gt .Code 0 }}\u2717{{ else }}\u2714{{ end }} ",
+          "style": "diamond",
+          "background": "{{ if gt .Code 0 }}#ff5252{{ else }}#9ece6a{{ end }}",
+          "foreground": "#1a1b26",
+          "trailing_diamond": "\ue0b4",
+          "template": "{{ if gt .Code 0 }}\u2717{{ else }}\u2714{{ end }}",
           "properties": {
             "always_enabled": true
           }
