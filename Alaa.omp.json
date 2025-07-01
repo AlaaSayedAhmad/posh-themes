@@ -96,7 +96,7 @@
           "type": "sysinfo",
           "style": "plain",
           "foreground": "#c0caf5",
-          "template": "\uf2db {{ .CPU.Percentage }}% | \uf85a {{ .RAM.PercentageUsed }}% |",
+          "template": "\uf2db {{ .CPU.Percentage }}% | \uf85a {{ .RAM.PercentageUsed }}% ",
           "properties": {
             "precision": 0
           }
@@ -125,7 +125,7 @@
           "type": "status",
           "style": "plain",
           "foreground": "{{ if gt .Code 0 }}#ff5252{{ else }}#9ece6a{{ end }}",
-          "template": " {{ if gt .Code 0 }}\u2717 {{ .Code }}{{ else }}\u2714{{ end }} ",
+          "template": " {{ if gt .Code 0 }}\u2717 {{ .Code }}{{ else }}\u2714{{ end }}",
           "properties": {
             "always_enabled": true
           }
