@@ -138,7 +138,7 @@
           "type": "time",
           "style": "plain",
           "foreground": "#82aaff",
-          "template": "  {{ .CurrentDate | date \"03:04 PM\" }} "
+          "template": "  {{ .CurrentDate | date \"Mon, 02 Jan 2006\" }}  {{ .CurrentDate | date \"03:04 PM\" }} "
         },
         {
           "type": "node",
@@ -155,49 +155,22 @@
           "template": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}\ue718 {{ .Full }}"
         },
         {
-          "type": "php",
-          "style": "plain",
-          "foreground": "#8892BF",
-          "properties": {
-            "fetch_version": true
-          },
-          "template": "  {{ .Full }} "
-        },
-        {
-          "type": "go",
-          "style": "plain",
-          "foreground": "#00ADD8",
-          "properties": {
-            "fetch_version": true
-          },
-          "template": " 🐹 {{ .Full }} "
-        },
-        {
-          "type": "rust",
-          "style": "plain",
-          "foreground": "#dea584",
-          "properties": {
-            "fetch_version": true
-          },
-          "template": " 🦀 {{ .Full }} "
-        },
-        {
-          "type": "dotnet",
-          "style": "plain",
-          "foreground": "#512bd4",
-          "properties": {
-            "fetch_version": true
-          },
-          "template": "  {{ .Full }} "
-        },
-        {
           "type": "docker",
           "style": "plain",
           "foreground": "#0db7ed",
           "properties": {
             "fetch_version": true
           },
-          "template": "  {{ .Full }} "
+          "template": " 🐳 {{ .Full }} "
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "#9ece6a",
+          "properties": {
+            "display_mode": "version"
+          },
+          "template": "  {{ .Version }} "
         }
       ],
       "type": "prompt"
