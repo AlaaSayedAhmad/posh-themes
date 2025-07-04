@@ -171,6 +171,15 @@
             "display_mode": "version"
           },
           "template": "  {{ .Version }} "
+        },
+        {
+          "type": "php",
+          "style": "plain",
+          "foreground": "#8892BF",
+          "properties": {
+            "fetch_version": true
+          },
+          "template": "  {{ .Full }} "
         }
       ],
       "type": "prompt"
